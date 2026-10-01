@@ -55,9 +55,6 @@
 .x-progressBar-fillColor {
   background: var(--aa-grad) !important;
 }
-.x-progressBar-progressBarBg {
-  --progress-bar-transform: 0;
-}
 
 /* ---- Page titles: sky to rose ---- */
 .main-entityHeader-title h1,
