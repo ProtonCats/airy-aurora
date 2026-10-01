@@ -1,0 +1,101 @@
+/**
+ * Airy Aurora for Spotify
+ * Palette comes from color.ini ([dark] / [light]); this file only shapes it.
+ */
+
+:root {
+  --aa-grad: linear-gradient(90deg, var(--spice-grad-a), var(--spice-grad-b));
+  --aa-grad-diag: linear-gradient(135deg, var(--spice-grad-a), var(--spice-grad-b));
+  --aa-edge: rgba(var(--spice-rgb-grad-a), 0.22);
+  --aa-radius: 14px;
+}
+
+/* ---- Panels: frosted aurora glow instead of flat fills ---- */
+.Root__main-view {
+  background:
+    radial-gradient(120% 55% at 0% 0%, rgba(var(--spice-rgb-grad-a), 0.16), transparent 62%),
+    radial-gradient(90% 50% at 100% 0%, rgba(var(--spice-rgb-grad-b), 0.12), transparent 62%),
+    var(--spice-main) !important;
+}
+.Root__nav-bar,
+.Root__right-sidebar,
+.main-nowPlayingBar-container {
+  background-image: linear-gradient(180deg, rgba(var(--spice-rgb-grad-a), 0.07), rgba(var(--spice-rgb-grad-b), 0.05)) !important;
+}
+.Root__nav-bar,
+.Root__main-view,
+.Root__right-sidebar {
+  box-shadow: inset 0 0 0 1px var(--aa-edge);
+}
+
+/* Per-album cover tints off; the aurora shows through instead */
+.main-entityHeader-backgroundColor,
+.playlist-playlist-actionBarBackground-background,
+.main-actionBar-ActionBarContainer > div[class*="background"] {
+  background: transparent !important;
+}
+.main-topBar-background {
+  background-color: rgba(var(--spice-rgb-main), 0.8) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* ---- Gradient accents ---- */
+/* Play buttons only; other primary buttons keep Spotify's own styling */
+.main-actionBar-ActionBarPlayButtonContainer [class*="button-primary__inner"],
+[data-testid="control-button-playpause"] [class*="button-primary__inner"],
+[data-testid="play-button"] [class*="button-primary__inner"] {
+  background: var(--aa-grad-diag) !important;
+  color: var(--spice-on-grad) !important;
+}
+.main-actionBar-ActionBarPlayButtonContainer [class*="button-primary__inner"] svg,
+[data-testid="control-button-playpause"] [class*="button-primary__inner"] svg,
+[data-testid="play-button"] [class*="button-primary__inner"] svg {
+  fill: var(--spice-on-grad) !important;
+}
+.x-progressBar-fillColor {
+  background: var(--aa-grad) !important;
+}
+.x-progressBar-progressBarBg {
+  --progress-bar-transform: 0;
+}
+
+/* ---- Page titles: sky to rose ---- */
+.main-entityHeader-title h1,
+.main-entityHeader-title span[class*="Type__TypeElement"] {
+  background: var(--aa-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---- Rows ---- */
+.main-trackList-trackListRow {
+  border-radius: 10px;
+}
+.main-trackList-trackListRow:hover {
+  background: rgba(var(--spice-rgb-grad-a), 0.14) !important;
+}
+.main-trackList-trackListRow.main-trackList-selected {
+  background: var(--aa-grad) !important;
+  --spice-text: var(--spice-on-grad);
+  --spice-subtext: var(--spice-on-grad);
+}
+
+/* ---- Scrollbars ---- */
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--spice-rgb-grad-a), 0.35) !important;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--spice-rgb-grad-a), 0.6) !important;
+}
+
+/* With the cover tint gone, header text can't use Spotify's over-media whites */
+.main-entityHeader-container [class*="color-text-subdued"] {
+  color: var(--spice-subtext) !important;
+}
+
+.main-yourLibraryX-libraryContainer,
+.main-yourLibraryX-library {
+  background: transparent !important;
+}
